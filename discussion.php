@@ -1,47 +1,68 @@
+
  <html>
    <head>
    <title>Add a Topic</title>
    </head>
    <body>
-   <h1>Add a Topic</h1>
-  <form method="POST" action="">
-   <p><strong>Your E-Mail Address:</strong><br>
-   <input type="email" name="email" size=40 maxlength=40>
- <p><strong>Topic Title:</strong><br>
-  <input type="text" name="title" size=40 maxlength=70>
-  <P><strong>Post Text:</strong><br>
-  <textarea name="post_text" rows=8 cols=40 wrap=virtual></textarea>
-  <P><input type="submit" name="submit" value="Add Topic"></p>
-  </form>
+<div>			
+	<form method="POST">
+		<input  type="input" name="searchtitle" placeholder="Search title">
+		<button  name="submit">
+			Search
+		</button>
+	</form>
+</div>
+
+<div>			
+	<button onclick="location.href='discussion_add.php'">Add</button>
+</div>
+
+<?php
+
+	require 'database_connect.php';
+
+	$searchtitle = "";
+	if(isset($_POST['searchtitle']))
+	{
+		$searchtitle = $_POST['searchtitle'];
+	}
+
+	$where = "";
+	if (!empty($searchtitle)) {
+		$where = "WHERE `Topic Title` like \"%" . $searchtitle . "%\"";
+	}
+
+
+	$sql = "SELECT `Email`, `Topic Title`, `Text` FROM discussion " . $where;
+
+	$i = 0;
+	if ($result = $mysqli -> query($sql)) {
+
+		while ($row = $result -> fetch_row()) {
+			$i++;
+?>
+
+		<h2> <?php echo $i ?> </h2>
+		<p><strong>E-Mail Address:</strong><br>
+		<?php echo $row[0]; ?>
+		<p><strong>Topic Title:</strong><br>
+		<?php echo $row[1]; ?>
+		<P><strong>Post Text:</strong><br>
+		<?php echo $row[2]; ?>
+
+<?php
+			printf ("%s (%s)\n", $row[0], $row[1]);
+		}
+		$result -> free_result();
+	}
+
+
+?>
+
+
+
+
  </body> 
  </html>
  
  
-<?php
-
-require 'database_connect.php';
-
-if(isset($_POST['submit']))
-{
-	
-	$email = $_POST['email'];
-	$title = $_POST['title'];
-	$text = $_POST['post_text'];
-	
-	if(isset($_POST['title']) && isset($_POST['post_text']) && isset($_POST['email']) && !empty($_POST['title']) &&  !empty(				 		$_POST['post_text']) && !empty($_POST['email']))
-	{
-		$sql = "INSERT INTO `discussion`( `Email`,`Topic Title`,`Text`) VALUES ('$email','$title','$text')";
-		$sql_run =  $mysqli -> query($sql);
-		
-		if($sql)
-		{
-			echo "Inserted";
-		}
-		else
-		{
-			echo mysqli_error();
-		}
-	}
-}
-
-?>

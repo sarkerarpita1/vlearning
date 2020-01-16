@@ -12,7 +12,7 @@ if(loggedin())
 		$sql_run =  $mysqli -> query($sql);
 		$rws =  $sql_run -> fetch_assoc();
 
-		echo "<img src='image/".$rws['Photo']."' height='240px' width='380px'>";
+		// echo "<img src='image/".$rws['Photo']."' height='240px' width='380px'>";
 		/*while()
 		{
 			
