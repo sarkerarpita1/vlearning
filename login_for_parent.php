@@ -41,16 +41,16 @@ require 'database_connect.php';
 		if(isset($user) && isset($pwd) && !empty($user) && !empty($pwd))
 		{
 			$query ="SELECT `id` FROM parents WHERE Email='$user' && Password='$pwd'";
-		 	if($data = mysql_query($query))
+		 	if($data = $mysql -> query($query))
 			{
-				$query_num_rows = mysql_num_rows($data);
+				$query_num_rows = mysqli_num_rows($data);
 				if($query_num_rows == 0)
 				{
 					echo "Invalid Username/Password Combination";
 				}
 				elseif($query_num_rows == 1)
 				{
-					$user_id = mysql_result($data, 0, 'id');
+					$user_id = $data -> fetch_assoc()['id'];
 					$_SESSION['user_id'] = $user_id;
 					header('Location:index_parent.php');
 				}

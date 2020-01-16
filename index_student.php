@@ -9,8 +9,8 @@ if(loggedin())
 		$teach_id = $_SESSION['user_id'];
 		
 		$sql = "SELECT * FROM `students` WHERE `id` = '$teach_id'";
-		$sql_run = mysql_query($sql);
-		$rws =  mysql_fetch_assoc($sql_run);
+		$sql_run = $mysqli -> query($sql);
+		$rws =  $sql_run -> fetch_assoc();
 
 		echo "<img src='image/".$rws['Picture']."' height='240px' width='380px'>";
 		
