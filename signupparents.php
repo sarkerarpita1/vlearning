@@ -202,9 +202,9 @@ if(isset($_POST['Sub']))
 	{
 		$query = "INSERT INTO `parents`(`id`, `Name`, `DOB`,`Description`,`Email`,`Password`, `Photo`, `Video`) VALUES('', '$pers_name', '$pers_Dob', '$pers_Decrip','$pers_email','$pers_pass','$image','$video_path')";
 		
-		$sql_run = $mysqli -> query($query);
+		$sql_run = mysql_query($query);
 		
-		if($mysqli -> query($sql_run))
+		if(mysql_query($sql_run))
 		{	
 		echo "Inserted";
 		}
@@ -234,10 +234,10 @@ if(isset($_POST['Sub']))
 	
 	if(isset($_POST['chldname1']) && isset($_POST['chldname2']) && isset($_POST['chldname3']) && isset($_POST['chldname4']) && isset($_POST['chldname5']) && isset($_POST['age1']) && isset($_POST['age2']) && isset($_POST['age3']) && isset($_POST['age4']) && isset($_POST['age5']) && !empty($_POST['chldname1']) && !empty($_POST['chldname2']) && !empty($_POST['chldname3']) && !empty($_POST['chldname4']) && !empty($_POST['chldname5']) && !empty($_POST['age1']) && !empty($_POST['age2']) && !empty($_POST['age3']) && !empty($_POST['age4']) && !empty($_POST['age5']))
 	{
-		$sql1 = $mysqli -> query("INSERT INTO `parent's children names`(`id`, `Name`, `Age`, `Parents Name`) VAlUES('',    	'$pernt_chld_nam1 , $pernt_chld_nam2 , $pernt_chld_nam3 , $pernt_chld_nam4 , $pernt_chld_nam5 ' , '$pernt_chld_age1 , $pernt_chld_age2 , $pernt_chld_age3 , $pernt_chld_age4 , $pernt_chld_age5', '$pers_name')");
-		$sql_exe = $mysqli -> query($sql1);
+		$sql1 = mysql_query("INSERT INTO `parent's children names`(`id`, `Name`, `Age`, `Parents Name`) VAlUES('',    	'$pernt_chld_nam1 , $pernt_chld_nam2 , $pernt_chld_nam3 , $pernt_chld_nam4 , $pernt_chld_nam5 ' , '$pernt_chld_age1 , $pernt_chld_age2 , $pernt_chld_age3 , $pernt_chld_age4 , $pernt_chld_age5', '$pers_name')");
+		$sql_exe = mysql_query($sql1);
 		
-		if($mysqli -> query($sql_exe))
+		if(mysql_query($sql_exe))
 		{	
 		echo "Inserted";
 		}

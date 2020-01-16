@@ -4,6 +4,7 @@ require 'database_connect.php';
 
 ?>
 
+
 <form action="" method="POST" enctype="multipart/form-data">
 
 <table border="0" cellpadding="5" cellspacing="0" width="600">
@@ -94,8 +95,6 @@ require 'database_connect.php';
 <?php
 if(isset($_POST['Sub']))
 {
-
-
 	$pers_name = $_POST['Name'];
 	$pers_Dob = $_POST['DOB'];
 	$pers_decrip = $_POST['desc'];
@@ -129,9 +128,9 @@ if(isset($_POST['Sub']))
 	{
 		$query = "INSERT INTO `teacher`(`id`, `Name`, `DOB`,`Description`,`Degree`,`Experience`,`Subject`, `Photo`,`Video`, `Email`, `Password`) VALUES('', '$pers_name', '$pers_Dob','$pers_decrip','$pers_degree','$pers_exper','$pers_sub	  ','$image','$video_path', '$pers_email', '$pers_pass')";
 		
-		$sql_run = $mysqli -> query($query);
+		$sql_run = mysql_query($query);
 		
-		if($mysqli -> query($sql_run))
+		if(mysql_query($sql_run))
 		{	
 		echo "Inserted";
 		}

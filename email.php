@@ -12,7 +12,7 @@ if (isset($_POST['contact_name']) && isset($_POST['contact_email']) && isset($_P
 		{
 			
 			$sql = "INSERT INTO `contact` (`Name`,`Email`,`Message`) VALUES ('$contact_name','$contact_email','$contact_text')";
-				$sq_run =  $mysqli -> query($sql);
+				$sq_run = mysql_query($sql);
 				
 					if($sq_run)
 					{
@@ -20,7 +20,7 @@ if (isset($_POST['contact_name']) && isset($_POST['contact_email']) && isset($_P
 					}
 					else
 					{
-					echo mysqli_error();
+					echo mysql_error();
 					}
 		}
 	}

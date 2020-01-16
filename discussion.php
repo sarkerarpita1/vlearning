@@ -31,7 +31,7 @@ if(isset($_POST['submit']))
 	if(isset($_POST['title']) && isset($_POST['post_text']) && isset($_POST['email']) && !empty($_POST['title']) &&  !empty(				 		$_POST['post_text']) && !empty($_POST['email']))
 	{
 		$sql = "INSERT INTO `discussion`( `Email`,`Topic Title`,`Text`) VALUES ('$email','$title','$text')";
-		$sql_run =  $mysqli -> query($sql);
+		$sql_run = mysql_query($sql);
 		
 		if($sql)
 		{
@@ -39,7 +39,7 @@ if(isset($_POST['submit']))
 		}
 		else
 		{
-			echo mysqli_error();
+			echo mysql_error();
 		}
 	}
 }
