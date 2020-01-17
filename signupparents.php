@@ -200,7 +200,7 @@ if(isset($_POST['Sub']))
 	
 	if(isset($pers_name) && isset($pers_Dob) && isset($pers_Decrip) && isset($pers_email) && isset($pers_pass) && !empty($pers_name) && !empty($pers_Dob) && !empty($pers_Decrip) && !empty($pers_email) && !empty($pers_pass))
 	{
-		$query = "INSERT INTO `parents`(`id`, `Name`, `DOB`,`Description`,`Email`,`Password`, `Photo`, `Video`) VALUES('', '$pers_name', '$pers_Dob', '$pers_Decrip','$pers_email','$pers_pass','$image','$video_path')";
+		$query = "INSERT INTO `parents`(`Name`, `DOB`,`Description`,`Email`,`Password`, `Photo`, `Video`) VALUES('$pers_name', '$pers_Dob', '$pers_Decrip','$pers_email','$pers_pass','$image','$video_path')";
 		
 		if($mysqli -> query($query))
 		{	

@@ -127,12 +127,14 @@ if(isset($_POST['Sub']))
 
 	if(isset($pers_name) && isset($pers_Dob) && isset($pers_decrip) && isset($pers_degree) && isset($pers_exper) && isset($pers_email) && isset($pers_pass) && isset($pers_sub) && !empty($pers_name) && !empty($pers_Dob)&& !empty($pers_decrip) && !empty($pers_degree) && !empty($pers_exper) && !empty($pers_sub) && !empty($pers_email) && !empty($pers_pass))
 	{
-		$query = "INSERT INTO `teacher`(`id`, `Name`, `DOB`,`Description`,`Degree`,`Experience`,`Subject`, `Photo`,`Video`, `Email`, `Password`) VALUES('', '$pers_name', '$pers_Dob','$pers_decrip','$pers_degree','$pers_exper','$pers_sub	  ','$image','$video_path', '$pers_email', '$pers_pass')";
+		$query = "INSERT INTO `teacher`(`Name`, `DOB`,`Description`,`Degree`,`Experience`,`Subject`, `Photo`,`Video`, `Email`, `Password`) VALUES('$pers_name', '$pers_Dob','$pers_decrip','$pers_degree','$pers_exper','$pers_sub	  ','$image','$video_path', '$pers_email', '$pers_pass')";
 		
 		if($mysqli -> query($query))
 		{	
 		echo "Inserted";
 		}
+
+		echo $mysqli->error;
 		
 		if(Move_Uploaded_File($temp, $target))
 		{
