@@ -41,7 +41,7 @@ require 'database_connect.php';
 		if(isset($user) && isset($pwd) && !empty($user) && !empty($pwd))
 		{
 			$query ="SELECT `id` FROM parents WHERE Email='$user' && Password='$pwd'";
-		 	if($data = $mysql -> query($query))
+		 	if($data = $mysqli -> query($query))
 			{
 				$query_num_rows = mysqli_num_rows($data);
 				if($query_num_rows == 0)
