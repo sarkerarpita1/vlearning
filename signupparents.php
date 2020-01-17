@@ -192,7 +192,7 @@ if(isset($_POST['Sub']))
 	
 	if($imageFileType != "mp4" && $imageFileType != "avi" && $imageFileType != "mov" && $imageFileType != "3gp" && $imageFileType	    != "mpeg")
 	{
-    	echo "File Format Not Suppoted";
+    	// echo "File Format Not Suppoted";
 	} 
 	
 	$video_path=$_FILES['fileToUpload']['name'];
@@ -204,17 +204,17 @@ if(isset($_POST['Sub']))
 		
 		if($mysqli -> query($query))
 		{	
-		echo "Inserted";
+		// echo "Inserted";
 		}
 		
 		if(!Move_Uploaded_File($temp, $target))
 		{
-			echo "Not Moved";
+			// echo "Not Moved";
 		}
 		
 		if(!Move_Uploaded_File($_FILES["fileToUpload"]["tmp_name"],$target_file))
 		{
-			echo "Not Uploaded ";
+			// echo "Not Uploaded ";
 		}
 
 	}
