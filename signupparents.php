@@ -202,9 +202,7 @@ if(isset($_POST['Sub']))
 	{
 		$query = "INSERT INTO `parents`(`id`, `Name`, `DOB`,`Description`,`Email`,`Password`, `Photo`, `Video`) VALUES('', '$pers_name', '$pers_Dob', '$pers_Decrip','$pers_email','$pers_pass','$image','$video_path')";
 		
-		$sql_run = $mysqli -> query($query);
-		
-		if($mysqli -> query($sql_run))
+		if($mysqli -> query($query))
 		{	
 		echo "Inserted";
 		}

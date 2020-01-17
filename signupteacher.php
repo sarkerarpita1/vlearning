@@ -129,9 +129,7 @@ if(isset($_POST['Sub']))
 	{
 		$query = "INSERT INTO `teacher`(`id`, `Name`, `DOB`,`Description`,`Degree`,`Experience`,`Subject`, `Photo`,`Video`, `Email`, `Password`) VALUES('', '$pers_name', '$pers_Dob','$pers_decrip','$pers_degree','$pers_exper','$pers_sub	  ','$image','$video_path', '$pers_email', '$pers_pass')";
 		
-		$sql_run = $mysqli -> query($query);
-		
-		if($mysqli -> query($sql_run))
+		if($mysqli -> query($query))
 		{	
 		echo "Inserted";
 		}
